@@ -20,7 +20,7 @@ mongoose.connect(config.DB_URI, {
 const app = express();
 app.use('/api/v1/products', productRoutes);
 
-if (process.env.NODDE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     const appPath = path.join( __dirname, '..', 'dist', 'reservation-app');
     app.use(express.static(appPath));
     app.get("*", function(req, rest) {
