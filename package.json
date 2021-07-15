@@ -29,6 +29,7 @@
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.2",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
