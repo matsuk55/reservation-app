@@ -35,12 +35,6 @@ router.post('/login', function(req, res) {
 
 router.post('/register', function(req, res) {
     const { username, password, email, confirmpassword } = req.body;
-    /*
-    const username = req.body.username;
-    const password = req.body.password;
-    const email = req.body.email;
-    const confirmpassword = req.body.confirmpassword;
-    */
 
     if (!username) {
         return res.status(422).send({errors: [{title: 'User error', detail: 'Please fil username .'}]});
@@ -64,8 +58,8 @@ router.post('/register', function(req, res) {
         }
         
         const user = new User({username, email, password});
-        user.save(function(err) {
-            if (err) {
+        user.save(function(err2) {
+            if (err2) {
                 return res.status(422).send({errors: [{title: 'User error', detail: 'Something wrong.'}]});
             }
             return res.json({"registerd":true});

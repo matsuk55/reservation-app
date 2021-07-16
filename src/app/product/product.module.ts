@@ -1,3 +1,4 @@
+import { AuthGuard } from './../auth/shared/auth.guard';
 import { ProductComponent } from './product.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,7 @@ const routes: Routes = [
   { path: 'products', component: ProductComponent,
     children: [
       { path: '', component: ProductListComponent },
-      { path: ':productId', component: ProductDetailComponent }
+      { path: ':productId', component: ProductDetailComponent, canActivate:[AuthGuard] }
     ] 
   }
 ];

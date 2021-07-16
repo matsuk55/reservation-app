@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/auth.guard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -5,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './shared/auth.service';
+import { TokenInterceptor } from './shared/token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const routes: Routes = [
             { path: 'login', component: LoginComponent, },
@@ -22,7 +25,13 @@ const routes: Routes = [
     FormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: []
 })
